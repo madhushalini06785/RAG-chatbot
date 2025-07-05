@@ -1,0 +1,28 @@
+## we can install all required libraries with:
+pip install -U langchain langchain-community sentence-transformers pinecone-client==3.0.0 transformers
+we're running this on Google Colab, the google.colab module is already available by default.
+
+let us discuss each library
+1.langchain
+Core library for building LLM pipelines like RetrievalQA
+
+2.langchain-community
+Provides integrations for document loaders, vectorstores, and embeddings
+
+3.sentence-transformers:
+Used to convert text chunks into embeddings (vectors) using pretrained models
+
+4.pinecone-client==3.0.0
+Python SDK to connect and interact with Pinecone vector database
+
+5.transformers
+HuggingFace's library for loading and running pretrained models like FLAN-T5
+
+6.os
+To manage environment variables (API keys) securely
+
+7.google.colab
+(Used in Colab) to upload files from your local system to the notebook
+
+8.huggingface_hub (internal via transformers)
+To download models from HuggingFace model hub
