@@ -76,4 +76,4 @@ MIT License
 
 ## Author
 K.Madhu Shalini – B.Tech 3rd Year Student | AI/ML Enthusiast
-Connect on LinkedIn (add your real link)
+Connect on LinkedIn (http://www.linkedin.com/in/kanneboina-madhushalini-8884632b6)
