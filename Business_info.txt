@@ -1,0 +1,21 @@
+Company Name: Yardstick
+
+Overview:
+Yardstick is a technology consulting firm that provides end-to-end software development services, cloud migration support, and enterprise automation.
+
+Services:
+- Custom Software Development
+- Cloud Computing Solutions (AWS, Azure, GCP)
+- DevOps and CI/CD Pipelines
+- AI & Machine Learning Consulting
+- IT Infrastructure Management
+
+Pricing:
+Our pricing model is project-based or subscription-based, depending on the client's preference. Consultation is free for the first 30 minutes.
+
+Location:
+We are headquartered in Bangalore, India, and have offices in the US and UK.
+
+Contact:
+Email: info@yardstick.com
+Phone: +91-9876543210
