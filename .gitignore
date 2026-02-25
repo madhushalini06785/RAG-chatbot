@@ -7,3 +7,9 @@ __pycache__/
 *.log
 .cache/
 data/
+
+
+
+# allow our document
+!data/
+!data/notes.pdf
