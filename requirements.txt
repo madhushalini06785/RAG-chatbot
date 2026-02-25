@@ -1,27 +1,29 @@
 streamlit==1.32.2
 
-# LangChain core
+# ---- LangChain (OLD compatible set) ----
 langchain==0.1.16
 langchain-core==0.1.45
 langchain-community==0.0.34
 langchain-text-splitters==0.0.1
-langchain-huggingface
-langchain-pinecone
-langchain-groq
+
+# IMPORTANT: compatible adapters
+langchain-huggingface==0.0.3
+langchain-pinecone==0.0.1
+langchain-groq==0.1.3
 
 # Vector DB
 pinecone-client==3.2.2
 
-# Embeddings & LLM (LET PIP DECIDE COMPATIBLE VERSIONS)
-sentence-transformers
-transformers
-torch
-huggingface-hub
+# Embeddings stack (LOCKED — very important)
+sentence-transformers==2.6.1
+transformers==4.39.3
+huggingface-hub==0.23.0
+torch==2.2.1
 
-# Document loader
-pypdf
+# Docs
+pypdf==4.2.0
 
-# Utils
-python-dotenv
-tqdm
-numpy
+# utils
+python-dotenv==1.0.1
+tqdm==4.66.2
+numpy==1.26.4
