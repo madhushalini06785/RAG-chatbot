@@ -5,6 +5,8 @@ from pinecone import Pinecone
 from langchain_pinecone import PineconeVectorStore
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_groq import ChatGroq
+from langchain.prompts import ChatPromptTemplate
+from langchain.chains import RetrievalQA
 
 # -------------------- ENV --------------------
 load_dotenv()
@@ -28,7 +30,10 @@ vectorstore = PineconeVectorStore(
     namespace="default"
 )
 
-retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
+retriever = vectorstore.as_retriever(
+    search_type="similarity",
+    search_kwargs={"k": 4}
+)
 
 # -------------------- LLM --------------------
 llm = ChatGroq(
@@ -37,78 +42,51 @@ llm = ChatGroq(
     temperature=0
 )
 
-# -------------------- MEMORY --------------------
-# simple conversation memory (stable on Streamlit)
-chat_history = []
+# -------------------- PROMPT --------------------
+template = """
+You are an AI assistant that answers questions strictly using the document.
 
-# -------------------- ASK FUNCTION --------------------
-def ask_question(query: str) -> str:
-    global chat_history
-
-    # 1️⃣ Retrieve relevant chunks
-    docs = retriever.invoke(query)
-
-    context_parts = []
-    sources = set()
-
-    for doc in docs:
-        # collect context
-        context_parts.append(doc.page_content)
-
-        # collect citations
-        if "page" in doc.metadata:
-            sources.add(f"Page {doc.metadata['page'] + 1}")
-        else:
-            sources.add("Unknown page")
-
-    context = "\n\n".join(context_parts)
-
-    # 2️⃣ Build chat history text
-    history_text = ""
-    for q, a in chat_history:
-        history_text += f"User: {q}\nAssistant: {a}\n"
-
-    # 3️⃣ Strict anti-hallucination prompt
-    prompt = f"""
-You are a document question answering AI.
-
-Follow these STRICT rules:
-1. Answer ONLY from the provided context
-2. Do NOT use your own knowledge
-3. If answer is missing say exactly:
+Rules:
+1. Only use the provided context
+2. Do NOT use outside knowledge
+3. If the answer is missing say:
 "I could not find the answer in the document."
-
-Conversation History:
-{history_text}
 
 Context:
 {context}
 
-Question: {query}
+Question:
+{question}
 
-Answer:
+Answer clearly and briefly.
 """
 
-    # 4️⃣ LLM call
-    response = llm.invoke(prompt)
-    answer = response.content
+prompt = ChatPromptTemplate.from_template(template)
 
-    # 5️⃣ Attach citations
-    source_text = "\n\nSources:\n" + "\n".join([f"• {s}" for s in sources])
-    final_answer = answer + source_text
+# -------------------- RAG CHAIN --------------------
+qa_chain = RetrievalQA.from_chain_type(
+    llm=llm,
+    retriever=retriever,
+    chain_type="stuff",
+    return_source_documents=True,
+    chain_type_kwargs={"prompt": prompt}
+)
 
-    # 6️⃣ Save memory
-    chat_history.append((query, answer))
+# -------------------- ASK FUNCTION --------------------
+def ask_question(query: str) -> str:
 
-    return final_answer
+    result = qa_chain.invoke({"query": query})
 
+    answer = result["result"]
+    docs = result["source_documents"]
 
-# -------------------- TERMINAL TEST (optional) --------------------
-if __name__ == "__main__":
-    while True:
-        query = input("\nAsk a question (type 'exit' to quit): ")
-        if query.lower() == "exit":
-            break
+    # extract page numbers
+    pages = set()
+    for doc in docs:
+        if "page" in doc.metadata:
+            pages.add(doc.metadata["page"] + 1)
 
-        answer = ask_question(query)
-        print("\nAnswer:\n", answer)
+    if pages:
+        answer += "\n\n📄 Source Pages: " + ", ".join(map(str, sorted(pages)))
+
+    return answer
