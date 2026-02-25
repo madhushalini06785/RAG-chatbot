@@ -1,4 +1,13 @@
 import streamlit as st
+from ingest import ingest_document
+
+# run only once when server starts
+if "db_ready" not in st.session_state:
+    with st.spinner("Setting up the AI knowledge base... First run may take 2-4 minutes ⏳"):
+        ingest_document()
+    st.session_state.db_ready = True
+
+import streamlit as st
 from rag_chain import ask_question, chat_history
 
 st.set_page_config(page_title="RAG AI Assistant", page_icon="🤖")

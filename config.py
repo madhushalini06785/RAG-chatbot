@@ -1,7 +1,5 @@
-import os
-from dotenv import load_dotenv
+import streamlit as st
 
-load_dotenv()
-
-PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
-PINECONE_INDEX = os.getenv("PINECONE_INDEX")
+PINECONE_API_KEY = st.secrets["PINECONE_API_KEY"]
+PINECONE_INDEX = st.secrets["PINECONE_INDEX"]
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
