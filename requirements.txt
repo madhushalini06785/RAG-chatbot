@@ -1,18 +1,21 @@
-streamlit
-langchain
-langchain-community
-langchain-text-splitters
-langchain-huggingface
-langchain-groq
-langchain-pinecone
+streamlit==1.35.0
 
-pinecone-client
+langchain==0.2.14
+langchain-core==0.2.36
+langchain-community==0.2.12
+langchain-text-splitters==0.2.2
 
-sentence-transformers
-transformers
-huggingface-hub
+langchain-pinecone==0.1.3
+langchain-huggingface==0.0.3
+langchain-groq==0.1.4
 
-pypdf
-python-dotenv
-tiktoken
+pinecone-client==3.2.2
+
+sentence-transformers==2.7.0
+transformers==4.41.2
+torch==2.3.0
+
+pypdf==4.2.0
+python-dotenv==1.0.1
+tqdm
 numpy
