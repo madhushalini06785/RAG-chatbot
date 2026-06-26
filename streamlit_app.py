@@ -8,7 +8,7 @@ from config import PINECONE_API_KEY, PINECONE_INDEX
 st.set_page_config(page_title="RAG AI Assistant", page_icon="🤖")
 
 st.title("📚 AI Document Assistant")
-st.write("Ask questions from your uploaded document")
+st.write("Ask questions about Swarm Intelligence")
 
 # ---------------- DATABASE CHECK (VERY IMPORTANT) ----------------
 # Connect Pinecone
