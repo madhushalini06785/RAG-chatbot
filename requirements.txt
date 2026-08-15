@@ -15,3 +15,8 @@ pypdf==4.2.0
 python-dotenv==1.0.1
 tqdm==4.66.2
 numpy==1.26.4
+
+python-docx
+pandas
+openpyxl
+xlrd
