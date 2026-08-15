@@ -6,6 +6,14 @@ A production-ready Retrieval-Augmented Generation (RAG) system combining **Strea
 
 ---
 
+## 📸 Preview
+### Home Page
+![Chatbot](chat1.jpeg)
+
+### Chat Conversation
+![Customer Support FAQ Chatbot](chat2.jpeg)
+
+
 ## ⚡ Quick Start (5 minutes)
 
 ### 1️⃣ Prerequisites
