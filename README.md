@@ -223,5 +223,3 @@ For issues and questions:
 3. Check application logs in terminal
 
 ---
-
-**Happy chatting! 🚀**
