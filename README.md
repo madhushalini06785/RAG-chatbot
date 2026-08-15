@@ -135,6 +135,8 @@ Your PDF → Extract Text → Split into Chunks → Generate Embeddings
     └─────────────────────────────────────────► Pinecone DB
                                                     ↓
 User Question ──→ Find Similar Chunks ──→ Send to Groq LLM ──→ Answer
+```
+
 ---
 
 ## 📊 Supported File Formats
