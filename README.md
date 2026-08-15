@@ -12,13 +12,12 @@ A production-ready Retrieval-Augmented Generation (RAG) system combining **Strea
 ```bash
 ✓ Python 3.8+
 ✓ API Keys: Pinecone, Groq (both have free tiers)
-✓ PDF file named: data/notes.pdf
 ```
 
 ### 2️⃣ Setup
 ```bash
 # Clone & enter directory
-git clone <your-repo-url>
+git clone <https://github.com/madhushalini06785/RAG-chatbot.git>
 cd RAGCHATBOT
 
 # Create virtual environment
