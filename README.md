@@ -32,7 +32,7 @@ A production-ready **Retrieval-Augmented Generation (RAG)** platform that proces
 
 ### 1️⃣ Clone & Setup
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/madhushalini06785/RAG-chatbot.git>
 cd RAGCHATBOT
 
 # Windows
