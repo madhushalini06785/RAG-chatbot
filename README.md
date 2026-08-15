@@ -4,6 +4,13 @@
 
 A production-ready **Retrieval-Augmented Generation (RAG)** platform that processes **6+ document formats**, manages **user sessions**, and delivers **context-aware answers** using **Streamlit** UI, **LangChain**, **Pinecone** vector database, and **Groq** LLM.
 
+## 📸 Preview
+### Home Page
+![Chatbot](Home_Image.jpeg)
+
+### Chat Conversation
+![Customer Support FAQ Chatbot](Conversation_Image.jpeg)
+
 ### 🌟 What Makes This Special
 - ✅ **Multi-format support**: PDF, DOCX, TXT, CSV, XLSX, XLS
 - ✅ **Batch processing**: Upload & process up to 10 documents at once
