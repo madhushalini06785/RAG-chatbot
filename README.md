@@ -1,8 +1,12 @@
 # 📚 AI Document Assistant with Multi-Document Support
 
-> **Enterprise-grade document Q&A system** — Upload multiple documents, ask intelligent questions, get accurate answers powered by AI
+> **A Retrieval-Augmented Generation (RAG) chatbot** — Upload multiple documents, ask intelligent questions, get accurate answers powered by AI
 
 A production-ready **Retrieval-Augmented Generation (RAG)** platform that processes **6+ document formats**, manages **user sessions**, and delivers **context-aware answers** using **Streamlit** UI, **LangChain**, **Pinecone** vector database, and **Groq** LLM.
+
+The application uses documents as its knowledge source. The document is converted into text chunks, transformed into vector embeddings, and stored in Pinecone Vector Database. When a user asks a question, the system retrieves the most relevant chunks from the document and provides them as context to the LLM.
+
+The chatbot is specifically designed to reduce hallucinations by instructing the LLM to answer only using the retrieved document context.
 
 ## 📸 Preview
 ### Home Page
@@ -12,12 +16,14 @@ A production-ready **Retrieval-Augmented Generation (RAG)** platform that proces
 ![Customer Support FAQ Chatbot](Conversation_Image.jpeg)
 
 ### 🌟 What Makes This Special
-- ✅ **Multi-format support**: PDF, DOCX, TXT, CSV, XLSX, XLS
-- ✅ **Batch processing**: Upload & process up to 10 documents at once
-- ✅ **Session management**: Isolated Q&A sessions with UUID tracking
-- ✅ **Web-based uploads**: No command-line needed—drag & drop in UI
-- ✅ **Real-time feedback**: Live processing status & error reporting
-- ✅ **Production-ready**: Scalable architecture ready for deployment
+- ✅ Document-based Question Answering — Answers questions from the provided PDF
+- ✅ Retrieval-Augmented Generation — Retrieves relevant document content before generating an answer
+- ✅ Semantic Search — Uses vector embeddings to find relevant information
+- ✅ Hallucination Reduction — Prompt instructs the LLM not to use outside knowledge
+- ✅ Source References — Displays the page numbers used for the answer
+- ✅ Automatic Knowledge Base Creation — PDF is indexed automatically when Pinecone is empty
+- ✅ Persistent Vector Storage — Document embeddings are stored in Pinecone
+- ✅ Simple Chat Interface — Interactive Streamlit-based conversational UI
 
 ---
 
@@ -33,7 +39,7 @@ A production-ready **Retrieval-Augmented Generation (RAG)** platform that proces
 ### 1️⃣ Clone & Setup
 ```bash
 git clone <https://github.com/madhushalini06785/RAG-chatbot.git>
-cd RAGCHATBOT
+cd RAG-chatbot
 
 # Windows
 python -m venv venv
@@ -56,10 +62,14 @@ PINECONE_API_KEY=your_pinecone_api_key
 PINECONE_INDEX=your_index_name
 GROQ_API_KEY=your_groq_api_key
 ```
+These variables are loaded by config.py and used by the ingestion and RAG pipeline.
 
 **Get free API keys:**
 - 🔗 [Pinecone Console](https://console.pinecone.io) - Free tier: 100K vectors
 - 🔗 [Groq API Key](https://console.groq.com/keys) - Free tier with rate limits
+
+- Pinecone — Used to store and search document embeddings
+- Groq — Used to generate the final answer from retrieved document context
 
 ### 4️⃣ Run the Application
 ```bash
