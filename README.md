@@ -37,7 +37,7 @@ A Retrieval-Augmented Generation (RAG) chatbot built with **Streamlit**, **LangC
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/madhushalini06785/RAG-chatbot.git>
 cd RAGCHATBOT
 ```
 
